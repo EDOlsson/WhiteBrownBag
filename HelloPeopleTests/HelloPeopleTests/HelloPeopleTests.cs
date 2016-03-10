@@ -15,7 +15,10 @@ namespace HelloPeopleTests
         {
             _app = ApplicationUnderTest.LaunchApplication();
 
-            _app.EnableRandomDelays();
+            //
+            // TODO - support random delays
+            //
+            // _app.EnableRandomDelays();
         }
 
         public void ApplicationShouldLaunch()
@@ -23,22 +26,22 @@ namespace HelloPeopleTests
             _app.ClickGreetButton();
         }
 
-        public async Task ClickingGreetButtonShouldDisplayHelloWorld()
+        public void ClickingGreetButtonShouldDisplayHelloWorld()
         {
             _app.ClickGreetButton();
 
-            var g = await _app.GetGreetingAsync();
+            var g = _app.GetGreeting();
 
             g.ShouldBe("Hello World!");
         }
 
-        public async Task SelectingBarringtonAndClickingGreetButtonShouldDisplayHelloBarrington()
+        public void SelectingBarringtonAndClickingGreetButtonShouldDisplayHelloBarrington()
         {
             _app.SelectBarrington();
 
             _app.ClickGreetButton();
 
-            var g = await _app.GetGreetingAsync();
+            var g = _app.GetGreeting();
 
             g.ShouldBe("Hello Barrington!");
         }
